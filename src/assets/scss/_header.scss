@@ -1,8 +1,34 @@
+$am_bottom-padding: $global-padding/4;
+
 .am_header {
-	font-size: 0.9em;
+	font-size: 0.85em;
 	color: $dark-gray;
+    line-height: 0.9;
+    table {
+        border-bottom: 1px dashed darkgrey;
+    }
+    th {
+      padding-bottom: 0.5em; 
+    }
+}
+
+ul.am_header {
+  margin: 0 0 0 0;
+  line-height: 90%;
+  padding-left: 1.3em;
+  a {
+    color: inherit;
+    &:hover {
+        text-decoration: underline;
+    }
+  }
+}
+
+h3.am_header {
+    margin-bottom: 0.33em;
 }
 
 p.am_header {
-	margin: 0;
+	margin-bottom: 0;
+    font-size: 0.80em;
 }
