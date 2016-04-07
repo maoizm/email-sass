@@ -1,34 +1,40 @@
-$am_bottom-padding: $global-padding/4;
+$am_scale: 0.75;
+$am_color: $dark-gray;
 
-.am_header {
-	font-size: 0.85em;
-	color: $dark-gray;
-    line-height: 0.9;
-    table {
-        border-bottom: 1px dashed darkgrey;
-    }
-    th {
-      padding-bottom: 0.5em; 
-    }
+th.am_header_image.columns {
+	background-color: $body-background;
+	table {
+		border-bottom: 2px solid darkgrey;
+		padding-bottom: 0;
+	}
 }
 
-ul.am_header {
-  margin: 0 0 0 0;
-  line-height: 90%;
-  padding-left: 1.3em;
-  a {
-    color: inherit;
-    &:hover {
-        text-decoration: underline;
-    }
-  }
-}
-
-h3.am_header {
-    margin-bottom: 0.33em;
-}
-
-p.am_header {
-	margin-bottom: 0;
-    font-size: 0.80em;
+th.am_header_contents.columns {
+	background-color: $body-background;
+	padding-bottom: 0;
+	
+	h1,h2,h3,h4,h5,h6,p,td,th,ul,ol,li,a {
+		color: $am_color;  }
+		
+	h4 {
+		margin-bottom: 0.33em;
+		font-size: $h4-font-size*$am_scale*$am_scale;  	}	
+	
+	td, th, p {
+		font-size: $global-font-size*$am_scale;
+		line-height: 90%;	}
+	
+	a {
+		&:hover {
+			text-decoration: underline; } 
+	}
+	
+	ul {
+		margin: 0 0 0 0;
+		padding-left: 1.3em;
+	}
+	
+	table {
+		border-bottom: 1px dashed darkgrey;
+		padding-bottom: 0;  }
 }
