@@ -1,28 +1,31 @@
-$am_scale: 0.75;
+$am_scale: 0.9;
 $am_color: $dark-gray;
 
-th.am_footer_bye.columns {
-    vertical-align: middle;
-    td, th {
-        vertical-align: bottom;
-    }
-}
-
-th.am_header_image.columns {
-  background-color: $medium-gray;
-  padding-bottom: 0;
-  border-bottom: 2px solid darkgrey;
-	table {
-		padding-bottom: 0;
-    margin-bottom: $global-gutter;
+table.row.am_footer_bye {
+	border-top: 1px dashed darkgrey;
+	padding-bottom: $global-gutter / 2;
+	tr th.columns {
+		vertical-align: middle;
+		padding-top: $global-gutter;
+		td, th {
+			vertical-align: bottom;
+		}
 	}
-  img {
-    margin-top: $global-gutter;
-  }
 }
 
-
-// applies to the last table in header section
-.row:last-child {
-  margin-bottom: $global-gutter;
+table.row.am_footer_copyright {
+	background-color: $body-background;
+	margin-bottom: 0;
+	p,a {
+		color: $am_color;
+		font-size: $global-font-size*$am_scale;
+	}
+	tr th.columns {
+		vertical-align: middle;
+		padding-top: $global-gutter;
+		padding-bottom: 0;
+		td, th {
+			vertical-align: bottom;
+		}
+	}
 }
