@@ -18,8 +18,8 @@
 
 $am_container-color: #f5f5e5;
 
-$primary-color: #2199e8;
-$secondary-color: #777777;
+$primary-color: #C9267B;  //#2199e8;
+$secondary-color: #262AC9; // #777777;
 $success-color: #3adb76;
 $warning-color: #ffae00;
 $alert-color: #ec5840;
@@ -59,9 +59,9 @@ $block-grid-gutter: $global-gutter;
 
 $global-font-weight: normal;
 $header-color: inherit;
-$global-line-height: 1.3;
+$global-line-height: 1;
 $global-font-size: 16px;
-$body-line-height: 19px;
+$body-line-height: 20px;
 $header-font-family: $body-font-family;
 $header-font-weight: $global-font-weight;
 $h1-font-size: 34px;

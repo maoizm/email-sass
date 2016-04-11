@@ -2,23 +2,59 @@ $am_scale: 0.9;
 $am_color: $black;
 
 table.row.am_body {
+	// formatting of all column cells
+	tbody>tr>th.columns { 
+		// formatting of all column cells
+		padding-bottom: $global-gutter * 5;
+		
+		// formatting of individual column cell
+		table>tbody>tr>th {
+			h1 { 
+				border-bottom: 1px dashed $dark-gray;
+				padding-bottom: $global-gutter;
+				margin-top: $global-gutter;
+				margin-bottom: $global-gutter;
+			}
+			p,h1,h2,h3,h4,h5	{	color: $am_color; }
+			a.am_nocolor 			{	color: inherit; }
+			em 								{ color: $primary-color; }			
+			blockquote {
+				font-family: Consolas, Lucida Console, Courier; 
+				font-weight: bold;
+			}
+			time {
+				text-shadow: 1px 1px 1px;
+			}
+		}
+	}
+}
 
-	p,h1,h2,h3,h4,h4 a { 
-		color: $am_color;
+table.row.am_body.am_social {
+	// formatting of the whole row
+	background-color: $body-background;
+	border-left: 4px solid darkgrey;
+	padding-left: $global-gutter * 2;
+	margin-bottom: $global-gutter * 2;
+	margin-left: 0;
+	
+	// formatting of all column cells
+	tbody>tr>th.columns {
+		padding-bottom: $global-gutter;
+		
+		// formatting of individual column cell
+		table>tbody>tr>th {
+
+		}
 	}
-	&.am_social h4{
-		text-transform: lowercase; 
-	}
-	&.am_social {
-		background-color: $body-background;
-		border-left: 4px solid darkgrey;
-		padding-left: $global-gutter * 2;
-		margin-left: 0;
-	}
-	&.am_social .social-icons{
-		padding-left: 1em;
+
+	.social-icons{
+		padding-left: $global-gutter * 4;
+		@media only screen and (max-width: #{$global-breakpoint}) {
+			padding-left: 0;
+		}
 		list-style: none;
 		text-align: left;
+		margin-bottom: 0;
 		li {
 			display: inline-block;
 			padding-right: .25em;
@@ -27,9 +63,7 @@ table.row.am_body {
 		}
 		img {
 			height: 4em; max-height: 85px;
-			width: 4em; max-width: 85px;
+			width: 4em !important; max-width: 85px;
 		}
 	}
 }
-
-	
