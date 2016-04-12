@@ -9,12 +9,14 @@ table.row.am_footer_bye, table.row.am_footer_copyright {
 		// formatting of individual column cell
 		table>tbody>tr>th {
 			vertical-align: bottom;
-
 			
 			// create style for non-colored links
 			a.am_nocolor {
 				text-decoration: underline;
 				color: inherit;
+			}
+			a.am_nounderline {
+				text-decoration: none;
 			}
 		}
 	}

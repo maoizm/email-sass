@@ -22,9 +22,29 @@ table.row.am_body {
 				font-family: Consolas, Lucida Console, Courier; 
 				font-weight: bold;
 			}
+			ul {
+				margin-top: 0;
+			}
+			img.am_calendar {
+				max-width: 250px;
+			}
 			time {
 				text-shadow: 1px 1px 1px;
 			}
+		}
+	}
+	
+	&.am_smalldivider {
+		// formatting of all column cells
+		tbody>tr>th.columns { 
+			padding-bottom: $global-gutter;
+		}
+	}
+	
+	&.am_nodivider {
+		// formatting of all column cells
+		tbody>tr>th.columns { 
+			padding-bottom: 0;
 		}
 	}
 }
@@ -32,14 +52,12 @@ table.row.am_body {
 table.row.am_body.am_social {
 	// formatting of the whole row
 	background-color: $body-background;
-	border-left: 4px solid darkgrey;
-	padding-left: $global-gutter * 2;
-	margin-bottom: $global-gutter * 2;
-	margin-left: 0;
+	border-left:  4px solid rgba($dark-gray, 0.3);
+	border-right: 4px solid rgba($dark-gray, 0.3);
 	
 	// formatting of all column cells
 	tbody>tr>th.columns {
-		padding-bottom: $global-gutter;
+		padding: $global-gutter $global-gutter * 2;
 		
 		// formatting of individual column cell
 		table>tbody>tr>th {
