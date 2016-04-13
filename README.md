@@ -1,6 +1,19 @@
-# Foundation for Emails Template
+# Starlink email templates
+#### based on Foundation for Emails Template
 
 [![devDependency Status](https://david-dm.org/zurb/foundation-emails-template/dev-status.svg)](https://david-dm.org/zurb/foundation-emails-template#info=devDependencies)
+
+Do the following to develop and test application:
+- scoop install nodejs ruby
+- npm install -g rimraf
+- npm install -g gulp-cli
+- npm install -g bower
+- cd <project directory>
+- npm install
+- gem install premailer
+- gem install nokogiri
+- premailer inputFile.html > outputFile.html
+
 
 **Please open all issues with this template on the main [Foundation for Emails](http://github.com/zurb/foundation-emails/issues) repo.**
 

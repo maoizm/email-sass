@@ -18,6 +18,22 @@ const PRODUCTION = !!(yargs.argv.production);
 gulp.task('build',
   gulp.series(clean, pages, sass, images, inline));
 
+// 
+gulp.task('pages',
+  gulp.series(clean, am_pages));
+
+function am_pages() {
+	return gulp.src('src/pages/**/*.html')
+		.pipe(panini({
+      root: 'src/pages',
+      layouts: 'src/layouts',
+      partials: 'src/partials'
+    }))
+		.pipe(inky())
+		.pipe(gulp.dest('dist'));
+}
+	
+	
 // Build emails, run the server, and watch for file changes
 gulp.task('default',
   gulp.series('build', server, watch));
