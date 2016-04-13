@@ -19,8 +19,8 @@ gulp.task('build',
   gulp.series(clean, pages, sass, images, inline));
 
 // 
-gulp.task('pages',
-  gulp.series(clean, am_pages));
+//gulp.task('pages',
+//  gulp.series(clean, am_pages));
 
 function am_pages() {
 	return gulp.src('src/pages/**/*.html')
@@ -29,7 +29,7 @@ function am_pages() {
       layouts: 'src/layouts',
       partials: 'src/partials'
     }))
-		.pipe(inky())
+		.pipe(inky({cheerio: {decodeEntities: false}}))
 		.pipe(gulp.dest('dist'));
 }
 	
@@ -53,7 +53,7 @@ function pages() {
       layouts: 'src/layouts',
       partials: 'src/partials'
     }))
-    .pipe(inky())
+    .pipe(inky({cheerio: {decodeEntities: true}}))
     .pipe(gulp.dest('dist'));
 }
 
