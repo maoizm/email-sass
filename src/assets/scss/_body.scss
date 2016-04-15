@@ -26,8 +26,9 @@ table.row.am_body {
 				margin-top: 0;
 			}
 			img.am_calendar {
-				max-width: 200px;
+				max-width: 220px;
 			}
+			button { text-align: center; }
 			time {
 				text-shadow: 1px 1px 1px;
 			}
@@ -57,7 +58,7 @@ table.row.am_body.am_social {
 	
 	// formatting of all column cells
 	tbody>tr>th.columns {
-		padding: $global-gutter $global-gutter * 2;
+		padding: $global-gutter $global-gutter * 2 $global-gutter * 2;
 		
 		// formatting of individual column cell
 		table>tbody>tr>th {
@@ -65,19 +66,18 @@ table.row.am_body.am_social {
 		}
 	}
 
-	.social-icons{
-		padding-left: $global-gutter * 4;
+	ul.social-icons {
+		margin: 0 auto;
+		padding: 0 $global-gutter;
 		@media only screen and (max-width: #{$global-breakpoint}) {
-			padding-left: 0;
+			padding: 0;
 		}
 		list-style: none;
 		text-align: left;
-		margin-bottom: 0;
 		li {
 			display: inline-block;
-			padding-right: .25em;
-			padding-left: .25em;
-			margin-bottom: 0.5em;
+			padding: 0 .25em;
+			margin: 0;
 		}
 		img {
 			height: 4em; max-height: 85px;
