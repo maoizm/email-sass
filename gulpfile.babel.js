@@ -8,32 +8,28 @@ import lazypipe from 'lazypipe';
 import inky     from 'inky';
 import fs       from 'fs';
 import siphon   from 'siphon-media-query';
+import he				from 'he';
 
 const $ = plugins();
 
 // Look for the --production flag
 const PRODUCTION = !!(yargs.argv.production);
 
+// mao: Decode all HTML entities using he module
+function am_decode(content) {
+	return he.decode(content);
+}
+
+gulp.task('decode', function() {
+	return gulp.src('dist/**/*.html')
+		.pipe($.change(am_decode))
+		.pipe(gulp.dest('dist'));
+});
+
 // Build the "dist" folder by running all of the above tasks
 gulp.task('build',
-  gulp.series(clean, pages, sass, images, inline));
+  gulp.series(clean, pages, 'decode', sass, images, inline));
 
-// 
-//gulp.task('pages',
-//  gulp.series(clean, am_pages));
-
-function am_pages() {
-	return gulp.src('src/pages/**/*.html')
-		.pipe(panini({
-      root: 'src/pages',
-      layouts: 'src/layouts',
-      partials: 'src/partials'
-    }))
-		.pipe(inky({cheerio: {decodeEntities: false}}))
-		.pipe(gulp.dest('dist'));
-}
-	
-	
 // Build emails, run the server, and watch for file changes
 gulp.task('default',
   gulp.series('build', server, watch));
@@ -91,16 +87,19 @@ function inline() {
 // Start a server with LiveReload to preview the site in
 function server(done) {
   browser.init({
-    server: 'dist'
+    server: { 
+			baseDir: 'dist', 
+			index: "letter_phplist.html"
+		}
   });
   done();
 }
 
 // Watch for file changes
 function watch() {
-  gulp.watch('src/pages/**/*.html', gulp.series(pages, inline, browser.reload));
-  gulp.watch(['src/layouts/**/*', 'src/partials/**/*'], gulp.series(resetPages, pages, inline, browser.reload));
-  gulp.watch(['../scss/**/*.scss', 'src/assets/scss/**/*.scss'], gulp.series(sass, pages, inline, browser.reload));
+  gulp.watch('src/pages/**/*.html', gulp.series(pages, 'decode', inline, browser.reload));
+  gulp.watch(['src/layouts/**/*', 'src/partials/**/*'], gulp.series(resetPages, pages, 'decode', inline, browser.reload));
+  gulp.watch(['../scss/**/*.scss', 'src/assets/scss/**/*.scss'], gulp.series(sass, pages, 'decode', inline, browser.reload));
   gulp.watch('src/img/**/*', gulp.series(images, browser.reload));
 }
 
@@ -114,10 +113,11 @@ function inliner(css) {
       applyStyleTags: false
     })
     .pipe($.injectString.replace, '<!-- <style> -->', `<style>${mqCss}</style>`)
-    .pipe($.htmlmin, {
-      collapseWhitespace: true,
-      minifyCSS: true
-    });
+//    .pipe($.htmlmin, {
+//      collapseWhitespace: true,
+//      minifyCSS: true
+//    })
+		;
 
   return pipe();
 }
