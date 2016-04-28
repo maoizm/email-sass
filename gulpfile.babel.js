@@ -15,24 +15,6 @@ const $ = plugins();
 // Look for the --production flag
 const PRODUCTION = !!(yargs.argv.production);
 
-// mao: Decode all HTML entities using he module
-function am_decode(content) {
-    return he.decode(content);
-}
-
-//gulp.task('decode', function () {
-//    return gulp.src('dist/**/*.html')
-//        .pipe($.change(am_decode))
-//        .pipe(gulp.dest('dist'));
-//});
-
-// mao: Decode all HTML entities using 'he' module
-//      and am_decode() function
-function decode() {
-    return gulp.src('dist/**/*.html')
-        .pipe($.change(am_decode))
-        .pipe(gulp.dest('dist'));
-}
 
 // Build the "dist" folder by running all of the above tasks
 gulp.task('build',
@@ -65,6 +47,19 @@ function pages() {
 function resetPages(done) {
     panini.refresh();
     done();
+}
+
+// mao: Decode all HTML entities using 'he' module
+//      and am_decode() function
+function decode() {
+    return gulp.src('dist/**/*.html')
+        .pipe($.change(am_decode))
+        .pipe(gulp.dest('dist'));
+}
+
+// mao: Decode all HTML entities using he module
+function am_decode(content) {
+    return he.decode(content);
 }
 
 // Compile Sass into CSS
@@ -105,9 +100,9 @@ function server(done) {
 
 // Watch for file changes
 function watch() {
-    gulp.watch('src/pages/**/*.html', gulp.series(pages, 'decode', inline, browser.reload));
-    gulp.watch(['src/layouts/**/*', 'src/partials/**/*'], gulp.series(resetPages, pages, 'decode', inline, browser.reload));
-    gulp.watch(['../scss/**/*.scss', 'src/assets/scss/**/*.scss'], gulp.series(sass, pages, 'decode', inline, browser.reload));
+    gulp.watch('src/pages/**/*.html', gulp.series(pages, decode, inline, browser.reload));
+    gulp.watch(['src/layouts/**/*', 'src/partials/**/*'], gulp.series(resetPages, pages, decode, inline, browser.reload));
+    gulp.watch(['../scss/**/*.scss', 'src/assets/scss/**/*.scss'], gulp.series(sass, pages, decode, inline, browser.reload));
     gulp.watch('src/img/**/*', gulp.series(images, browser.reload));
 }
 
@@ -118,7 +113,7 @@ function inliner(css) {
     var pipe = lazypipe()
         .pipe($.inlineCss, { applyStyleTags: false })
         .pipe($.injectString.replace, '<!-- <style> -->', `<style>${mqCss}</style>`)
-        .pipe($.htmlin, { collapseWhitespace: true, minifyCSS: true }
+        .pipe($.htmlmin, { collapseWhitespace: true, minifyCSS: true }
     );
     return pipe();
 }
