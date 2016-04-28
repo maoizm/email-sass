@@ -15,9 +15,10 @@ table.row.am_body {
 				margin-top: $global-gutter;
 				margin-bottom: $global-gutter;
 			}
-			p,h1,h2,h3,h4,h5	{	color: $am_color; }
-			a.am_nocolor 			{	color: inherit; }
-			em 								{ color: $primary-color; }			
+			p					{	color: $am_color; }
+			h1,h2,h3,h4,h5		{   color: $primary-color; }
+			a.am_nocolor 		{	color: inherit; }
+			em 					{   color: $primary-color; }			
 			blockquote {
 				font-family: Consolas, Lucida Console, Courier; 
 				font-weight: bold;
