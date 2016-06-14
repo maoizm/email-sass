@@ -45,8 +45,10 @@ table.row.am_footer_copyright {
     p {
       color: $am_color;
       font-size: $global-font-size * $am_scale;
+	  line-height: $body-line-height * $am_scale * $am_scale;
       &.am_smaller {
         font-size: $global-font-size * $am_scale * $am_scale;
+		line-height: $body-line-height * $am_scale * $am_scale * $am_scale * $am_scale;
       }
     }
     img.am_poweredby {

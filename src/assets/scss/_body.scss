@@ -1,38 +1,41 @@
 $am_scale: 0.9;
 $am_color: $black;
 
+h1 { 
+	border-bottom: 1px dashed $dark-gray;
+	padding-bottom: $global-gutter;
+	margin-top: $global-gutter;
+	margin-bottom: $global-gutter;
+}
+p					{	color: $am_color; }
+h1,h2,h3,h4,h5		{   color: $primary-color; }
+a.am_nocolor 		{	color: inherit; }
+em 					{   color: $primary-color; }	
+time {
+	text-shadow: 1px 1px 1px;
+}
+button { text-align: center; }
+img.am_calendar {
+	max-width: 220px;
+}
+blockquote {
+	font-family: Consolas, Lucida Console, Courier; 
+	font-weight: bold;
+}
+ul {
+	margin-top: 10px;
+	padding-left: 1em;
+}
+
 table.row.am_body {
 	// formatting of all column cells
 	tbody>tr>th.columns { 
 		// formatting of all column cells
-		padding-bottom: $global-gutter * 5;
+		padding-bottom: 0;
 		
 		// formatting of individual column cell
-		table>tbody>tr>th {
-			h1 { 
-				border-bottom: 1px dashed $dark-gray;
-				padding-bottom: $global-gutter;
-				margin-top: $global-gutter;
-				margin-bottom: $global-gutter;
-			}
-			p					{	color: $am_color; }
-			h1,h2,h3,h4,h5		{   color: $primary-color; }
-			a.am_nocolor 		{	color: inherit; }
-			em 					{   color: $primary-color; }			
-			blockquote {
-				font-family: Consolas, Lucida Console, Courier; 
-				font-weight: bold;
-			}
-			ul {
-				margin-top: 0;
-			}
-			img.am_calendar {
-				max-width: 220px;
-			}
-			button { text-align: center; }
-			time {
-				text-shadow: 1px 1px 1px;
-			}
+		table>tbody>tr>th {	
+
 		}
 	}
 	

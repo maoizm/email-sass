@@ -92,7 +92,7 @@ function server(done) {
     browser.init({
         server: {
             baseDir: 'dist',
-            index: "20160428_letter_phplist.html"
+            index: "20160614_letter_ATO.html"
         }
     });
     done();
@@ -111,9 +111,9 @@ function inliner(css) {
     var css = fs.readFileSync(css).toString();
     var mqCss = siphon(css);
     var pipe = lazypipe()
-        .pipe($.inlineCss, { applyStyleTags: false })
+        .pipe($.inlineCss, { applyStyleTags: false, removeStyleTags: true, preserveMediaQueries:true })
         .pipe($.injectString.replace, '<!-- <style> -->', `<style>${mqCss}</style>`)
-        .pipe($.htmlmin, { collapseWhitespace: true, minifyCSS: true }
+        .pipe($.htmlmin, { collapseWhitespace: false, minifyCSS: true }
     );
     return pipe();
 }
