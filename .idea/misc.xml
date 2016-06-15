@@ -5,9 +5,8 @@
       <BehatSettings />
     </behat_settings>
   </component>
-  <component name="JsBowerSettings">
-    <exe-path>C:\Users\mao\AppData\Local\scoop\apps\nodejs\5.9.1\nodejs\bower.cmd</exe-path>
-    <config-path />
+  <component name="JavaScriptSettings">
+    <option name="languageLevel" value="ES6" />
   </component>
   <component name="PhpUnit">
     <phpunit_settings>
@@ -27,21 +26,5 @@
   <component name="SshConsoleOptionsProvider">
     <option name="myEncoding" value="UTF-8" />
     <option name="myConnectionType" value="NONE" />
-  </component>
-  <component name="masterDetails">
-    <states>
-      <state key="ScopeChooserConfigurable.UI">
-        <settings>
-          <last-edited>Unnamed</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-    </states>
   </component>
 </project>

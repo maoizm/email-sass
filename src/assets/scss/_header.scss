@@ -52,12 +52,10 @@ th.am_header_image.columns {
   margin-bottom: $global-gutter;
 }
 
-.am_header_logo {
-  height: auto; width: auto;
-  max-height: 80px; max-width: 268px;
-  top: 50%;
+th.am_header_logo {
+  vertical-align: middle;
 }
 
-th.am_header_logo table tr th {
-  vertical-align: middle;
+img.am_header_logo {
+  max-height: 90px;
 }

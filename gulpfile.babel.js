@@ -49,8 +49,7 @@ function resetPages(done) {
     done();
 }
 
-// mao: Decode all HTML entities using 'he' module
-//      and am_decode() function
+// mao: Decode all HTML entities using 'he' module and am_decode() function
 function decode() {
     return gulp.src('dist/**/*.html')
         .pipe($.change(am_decode))
