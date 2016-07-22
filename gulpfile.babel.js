@@ -91,7 +91,7 @@ function server(done) {
     browser.init({
         server: {
             baseDir: 'dist',
-            index: "20160614_letter_ATO.html"
+            index: "20160725_letter_CollocationNew.html"
         }
     });
     done();

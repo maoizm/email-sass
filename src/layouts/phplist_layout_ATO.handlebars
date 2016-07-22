@@ -12,6 +12,7 @@
   <table class="body">
     <tr><td class="center" align="center" valign="top"><center>
       <container>
+        <!-- header start -->
         <row>
           <columns class="am_header_logo" large="6">
             <img class="am_header_logo" src="http://starlink.ua/design/starlink/images/new/logo-full-233x90-transparent.png" alt="Starlink.ua logo. Ваш безпроблемний ІТ-департамент">
@@ -20,11 +21,13 @@
             <img class="am_header_logo" src="http://starlink.ua/design/starlink/images/new/partner_logos/chyste-nebo-logo.png" alt="Благодійний Фонд &laquo;Чисте Небо&raquo;">
           </columns>
         </row>
+        <!-- header end -->
 
         <!-- body start -->
           {{> body}}  {{!-- Pages you create in the src/pages/ folder are inserted here when the flattened emails are created. --}}
         <!-- body end -->
 
+        <!-- footer start -->
         <row class="am_footer_bye">
           <columns large="3" small="4">
             <a href="http://starlink.ua"><img src="http://starlink.ua/design/starlink/images/new/logo-star-114x100-transparent.png" alt="Starlink.ua graphics logo"></a>
@@ -35,9 +38,12 @@
         </row>
         <row class="am_footer_copyright">
           <columns>
-        	<p><em>© 2016 <a class="am_nocolor" href="http://starlink.ua">Старлінк Україна</a>, всі права застережено.</em></p>
+            <p><em>© 2016 <a class="am_nocolor" href="http://starlink.ua">Старлінк Україна</a>, всі права застережено.</em></p>
           </columns>
         </row>
+        <!-- footer end -->
+
+        <!-- footer phplist start -->
         <row class="am_footer_copyright">
           <columns>
             <p class="am_smaller">Це повідомлення було відправлене на адресу [EMAIL] з адреси [FROMEMAIL].<br />
@@ -45,6 +51,7 @@
               Ви отримали цього листа, тому що є клієнтом компанії Старлінк, та/або тому, що підписались на інформаційні оновлення від нашої компанії. Для зміни інформації про Вас, а також для вибору розсилок, на які Ви бажаєте підписатись, зайдіть на сторінку <a href="[PREFERENCESURL]">Вашого профілю</a>. Також Ви можете <a href="[UNSUBSCRIBEURL]">повністю відписатися</a> від всіх майбутніх повідомлень.</p>
           </columns>
         </row>
+        <!-- footer phplist end -->
       </container>
     </center></td></tr>
   </table>
