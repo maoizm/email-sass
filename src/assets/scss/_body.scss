@@ -1,91 +1,168 @@
 $am_scale: 0.9;
 $am_color: $black;
 
-h1 { 
-	border-bottom: 1px dashed $dark-gray;
-	padding-bottom: $global-gutter;
-	margin-top: $global-gutter;
-	margin-bottom: $global-gutter;
+h1 {
+  border-bottom: 1px dashed $dark-gray;
+  padding-bottom: $global-gutter;
+  margin-top: $global-gutter;
+  margin-bottom: $global-gutter;
 }
-p					{	color: $am_color; }
-h1,h2,h3,h4,h5		{   color: $primary-color; }
-a.am_nocolor 		{	color: inherit; }
-em 					{   color: $primary-color; }	
+
+p { color: $am_color; }
+
+h1, h2, h3, h4, h5 { color: $primary-color; }
+
+a.am_nocolor { color: inherit; }
+
+em { color: $primary-color; }
+
 time {
-	text-shadow: 1px 1px 1px;
+  text-shadow: 1px 1px 1px;
 }
+
 button { text-align: center; }
+
 img.am_calendar {
-	max-width: 220px;
+  max-width: 220px;
 }
+
 blockquote {
-	font-family: Consolas, Lucida Console, Courier; 
-	font-weight: bold;
+  font-family: Consolas, Lucida Console, Courier;
+  font-weight: bold;
 }
+
 ul {
-	margin-top: 10px;
-	padding-left: 1em;
+  margin-top: 10px;
+  padding-left: 1em;
 }
 
 table.row.am_body {
-	// formatting of all column cells
-	tbody>tr>th.columns { 
-		// formatting of all column cells
-		padding-bottom: 0;
-		
-		// formatting of individual column cell
-		table>tbody>tr>th {	
+  // formatting of all column cells
+  tbody > tr > th.columns {
+    // formatting of all column cells
+    padding-bottom: 0;
 
-		}
-	}
-	
-	&.am_smalldivider {
-		// formatting of all column cells
-		tbody>tr>th.columns { 
-			padding-bottom: $global-gutter;
-		}
-	}
-	
-	&.am_nodivider {
-		// formatting of all column cells
-		tbody>tr>th.columns { 
-			padding-bottom: 0;
-		}
-	}
+    // formatting of individual column cell
+    table > tbody > tr > th {
+    }
+  }
+
+  &.am_smalldivider {
+    // formatting of all column cells
+    tbody > tr > th.columns {
+      padding-bottom: $global-gutter;
+    }
+  }
+
+  &.am_nodivider {
+    // formatting of all column cells
+    tbody > tr > th.columns {
+      padding-bottom: 0;
+    }
+  }
 }
 
 table.row.am_body.am_social {
-	// formatting of the whole row
-	background-color: $body-background;
-	border-left:  4px solid rgba($dark-gray, 0.3);
-	border-right: 4px solid rgba($dark-gray, 0.3);
-	
-	// formatting of all column cells
-	tbody>tr>th.columns {
-		padding: $global-gutter $global-gutter * 2 $global-gutter * 2;
-		
-		// formatting of individual column cell
-		table>tbody>tr>th {
+  // formatting of the whole row
+  background-color: $body-background;
+  border-left: 4px solid rgba($dark-gray, 0.3);
+  border-right: 4px solid rgba($dark-gray, 0.3);
 
-		}
-	}
+  // formatting of all column cells
+  tbody > tr > th.columns {
+    padding: $global-gutter $global-gutter * 2 $global-gutter * 2;
 
-	ul.social-icons {
-		margin: 0 auto;
-		padding: 0 $global-gutter;
-		@media only screen and (max-width: #{$global-breakpoint}) {
-			padding: 0;
-		}
-		list-style: none;
-		text-align: left;
-		li {
-			display: inline-block;
-			padding: 0 .25em;
-			margin: 0;
-		}
-		img {
-			height: 4em; max-height: 85px;
-			width: 4em !important; max-width: 85px;
-		}
-	}
+    // formatting of individual column cell
+    table > tbody > tr > th {
+    }
+  }
+
+  ul.social-icons {
+    margin: 0 auto;
+    padding: 0 $global-gutter;
+    @media only screen and (max-width: #{$global-breakpoint}) {
+      padding: 0;
+    }
+    list-style: none;
+    text-align: left;
+    li {
+      display: inline-block;
+      padding: 0 .25em;
+      margin: 0;
+    }
+    img {
+      height: 4em; max-height: 85px;
+      width: 4em !important; max-width: 85px;
+    }
+  }
+}
+
+table.am_price {
+  width: 100%;
+  border-top: 1px solid black;
+  caption {
+    text-align: left;
+    font-weight: bold;
+    font-size: 115%;
+  }
+  th {
+    background: $light-gray;
+    font-weight: bold;
+    &.am_price_column1 {
+      width: 70%;
+    }
+  }
+  > tr {
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+  }
+  > tr:last-child {
+    border-bottom: 1px solid black;
+  }
+}
+
+table.am_price_size {
+  caption {
+    background: lightgreen;
+  }
+}
+
+table.am_price_electricity {
+  caption {
+    background: lightblue;
+  }
+  tfoot {
+    border-top: 1px solid black;
+  }
+}
+
+table.am_price_internet {
+  caption {
+    background: lightsalmon;
+  }
+  th.am_price_internet_columnUA {
+    width: 25%;
+  }
+  th.am_price_internet_columnWorld {
+    width: 30%;
+  }
+  td {
+    border-bottom: 1px dotted dimgrey;
+    vertical-align: middle;
+  }
+  td.am_solid {
+    border-bottom: 1px solid black;
+  }
+  tfoot {
+    border-top: 1px solid black;
+    td {
+      border-bottom: 0;
+    }
+  }
+}
+
+table.am_price_extra {
+  caption {
+    background: lightseagreen;
+  }
 }
