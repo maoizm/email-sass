@@ -4,7 +4,8 @@ npm-debug.log
 bower_components
 dist
 .sass-cache
-.idea
+.awspublish*
+config.json
 
 # Created by https://www.gitignore.io/api/phpstorm
 
