@@ -47,6 +47,15 @@ th.am_header_image.columns {
   }
 }
 
+p.am_viewbrowser {
+  margin-left: -$global-gutter;
+  margin-right: -$global-gutter;
+  color: $light-gray;
+  background: $dark-gray;
+  font-size: smaller;
+  line-height: 90%;
+}
+
 // applies to the last table in header section
 .row:last-child {
   margin-bottom: $global-gutter;

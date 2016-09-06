@@ -17,7 +17,7 @@ a.am_nocolor { color: inherit; }
 em { color: $primary-color; }
 
 time {
-  text-shadow: 1px 1px 1px;
+  text-shadow: 0px 1px 1px;
 }
 
 button { text-align: center; }
@@ -91,8 +91,8 @@ table.row.am_body.am_social {
       margin: 0;
     }
     img {
-      height: 4em; max-height: 85px;
-      width: 4em !important; max-width: 85px;
+      height: 3em; max-height: 85px;
+      width: 3em !important; max-width: 85px;
     }
   }
 }
