@@ -14,6 +14,8 @@ h1, h2, h3, h4, h5 { color: $primary-color; }
 
 a.am_nocolor { color: inherit; }
 
+a:hover { text-decoration-line: underline !important; }
+
 em { color: $primary-color; }
 
 time {
@@ -78,7 +80,7 @@ table.row.am_body.am_social {
   }
 
   ul.social-icons {
-    margin: 0 auto;
+    margin: 10px auto;
     padding: 0 $global-gutter;
     @media only screen and (max-width: #{$global-breakpoint}) {
       padding: 0;
@@ -169,4 +171,8 @@ table.am_price_extra {
   caption {
     background: lightseagreen;
   }
+}
+.image_scale {
+  max-width: 600px;
+  width: 600px;
 }
