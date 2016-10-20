@@ -130,14 +130,21 @@ function inliner(css) {
     .pipe($.inlineCss, {
       applyStyleTags: false,
       removeStyleTags: false,
-      removeLinkTags: false
+      removeLinkTags: true
     })
     .pipe($.replace, '<!-- <style> -->', `<style>${mqCss}</style>`)
     .pipe($.htmlmin, {
-      collapseWhitespace: false,
+      collapseWhitespace: true,
+      conservativeCollapse: true,
+      preserveLineBreaks: true,
       minifyCSS: true
-    });
-
+    })
+    .pipe($.replace, /^(.{3200,}?[; ])(.+)$/mg, `$1\n$2`)
+    .pipe($.replace, /^(.{1600,}?[; ])(.+)$/mg, `$1\n$2`)
+    .pipe($.replace, /^(.{800,}?[; ])(.+)$/mg, `$1\n$2`)
+    .pipe($.replace, /^(.{400,}?[; ])(.+)$/mg, `$1\n$2`)
+    .pipe($.replace, /^(.{200,}?[; ])(.+)$/mg, `$1\n$2`)
+    .pipe($.replace, /^(.{100,}?[; ])(.+)$/mg, `$1\n$2`);
   return pipe();
 }
 

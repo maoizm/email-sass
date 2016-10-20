@@ -48,11 +48,12 @@ th.am_header_image.columns {
 }
 
 p.am_viewbrowser {
-  margin-left: -$global-gutter;
-  margin-right: -$global-gutter;
-  color: $light-gray;
-  background: $dark-gray;
+/*  margin-left: -$global-gutter;
+  margin-right: -$global-gutter;*/
+  color: $dark-gray;
+  background: transparent;
   font-size: smaller;
+  font-weight: 600;
   line-height: 90%;
 }
 
