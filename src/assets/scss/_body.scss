@@ -97,6 +97,12 @@ table.row.am_body.am_social {
       width: 3em !important; max-width: 85px;
     }
   }
+  
+  .social-icons img {
+    display: inline;
+    height: 3em; max-height: 85px;
+    width: 3em !important; max-width: 85px;
+  }
 }
 
 table.am_price {
