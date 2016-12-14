@@ -26,7 +26,7 @@ $alert-color: #ec5840;
 $light-gray: #ebebeb; // #f3f3f3;
 $medium-gray: #cacaca;
 $dark-gray: #8a8a8a;
-$black: #0a0a0a;
+$black: #1b1b1b;
 $white: #fefefe;
 $pre-color: #ff6908;
 $global-width: 580px;
@@ -58,27 +58,32 @@ $block-grid-gutter: $global-gutter;
 // -------------
 
 $global-font-color: $black;
-$body-font-family: Calibri, Helvetica, Arial, sans-serif;
-$global-font-weight: normal;
+$body-font-family: 'Roboto', Calibri, Helvetica, Arial, sans-serif;
+
+$global-font-weight: 300;
+
 $header-color: inherit;
-$global-line-height: 1;
+$global-line-height: 1.1;
 $global-font-size: 16px;
-$body-line-height: 20px;
+$body-line-height: 24px;
 $header-font-family: $body-font-family;
+
 $header-font-weight: $global-font-weight;
+
 $h1-font-size: 34px;
-$h2-font-size: 30px;
-$h3-font-size: 28px;
-$h4-font-size: 24px;
-$h5-font-size: 20px;
-$h6-font-size: 18px;
-$header-margin-bottom: 10px;
-$paragraph-margin-bottom: 10px;
-$small-font-size: 80%;
+$h2-font-size: 109.656px;
+$h3-font-size: 67.773px;
+$h4-font-size: 41.887px;
+$h5-font-size: 25.888px;
+$h6-font-size: 16px;
+$header-margin-bottom: 24px;
+
+$paragraph-margin-bottom: 24px;
+$small-font-size: 75%;
 $small-font-color: $medium-gray;
-$lead-font-size: $global-font-size * 1.25;
+$lead-font-size: $global-font-size * 1.5;
 $lead-line-height: 1.6;
-$text-padding: 10px;
+$text-padding: 16px;
 $subheader-lineheight: 1.4;
 $subheader-color: $dark-gray;
 $subheader-font-weight: $global-font-weight;
@@ -107,11 +112,11 @@ $button-font-size: (
   tiny: 10px,
   small: 12px,
   default: 16px,
-  large: 20px,
+  large: 24px,
 );
 $button-color: $white;
 $button-color-alt: $medium-gray;
-$button-font-weight: bold;
+$button-font-weight: 400;
 $button-margin: 0 0 $global-margin 0;
 $button-background: $primary-color;
 $button-border: 2px solid $button-background;

@@ -1,6 +1,10 @@
 $am_scale: 0.75;
 $am_color: $dark-gray;
 
+strong, b {
+    font-weight: 500;
+}
+
 th.am_header_contents.columns {
   background-color: $body-background;
   padding-bottom: 0;
@@ -53,7 +57,7 @@ p.am_viewbrowser {
   color: $dark-gray;
   background: transparent;
   font-size: smaller;
-  font-weight: 600;
+  font-weight: 300;
   line-height: 90%;
 }
 
