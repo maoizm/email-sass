@@ -1,0 +1,51 @@
+{{!-- This layout will be used on pages which refer it in their Front Matter block --}}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+  <link rel="stylesheet" type="text/css" href="css/app.css">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width">
+</head>
+<body>
+  <!-- <style> -->
+  <table class="body">
+    <tr><td class="center" align="center" valign="top"><center>
+      <container>
+        <!-- header start -->
+        <row>
+            <columns small="12">
+            <div class="viewbrowser">
+              <p class="am_viewbrowser">Якщо Ваша поштова програма некоректно відображає цей лист [VIEWBROWSER]</p>
+            </div>
+            </columns>
+        </row>
+        <!-- header end -->
+
+        <!-- body start -->
+          {{> body}}  {{!-- Pages you create in the src/pages/ folder are inserted here when the flattened emails are created. --}}
+        <!-- body end -->
+
+        <!-- footer start -->
+
+        <row class="am_footer_copyright">
+          <columns>
+            <p><em>© 2016 <a class="am_nocolor" href="http://starlink.ua">Старлінк Україна</a>, всі права застережено.</em></p>
+          </columns>
+        </row>
+        <!-- footer end -->
+
+        <!-- footer phplist start -->
+        <row class="am_footer_copyright">
+          <columns>
+            <p class="am_smaller">Це повідомлення було відправлене на адресу [EMAIL] з адреси [FROMEMAIL].<br />
+              Для пересилання цього повідомлення не використовуйте кнопку "Переслати" з Вашої поштової програми, замість цього скористайтесь <a href="[FORWARDURL]">сторінкою пересилання</a> нашої системи електронних листів.<br />
+              Ви отримали цього листа, тому що є клієнтом компанії Старлінк, та/або тому, що підписались на інформаційні оновлення від нашої компанії. Для зміни інформації про Вас, а також для вибору розсилок, на які Ви бажаєте підписатись, зайдіть на сторінку <a href="[PREFERENCESURL]">Вашого профілю</a>. Також Ви можете <a href="[UNSUBSCRIBEURL]">повністю відписатися</a> від всіх майбутніх повідомлень.</p>
+          </columns>
+        </row>
+        <!-- footer phplist end -->
+      </container>
+    </center></td></tr>
+  </table>
+</body>
+</html>
