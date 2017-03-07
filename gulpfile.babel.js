@@ -107,7 +107,7 @@ function server(done) {
   browser.init({
         server: {
             baseDir: 'dist',
-            index: "20161226_letter_NewYear.html"
+            index: "20170307_letter_8March.html"
         }
   });
   done();
