@@ -3,7 +3,6 @@ import plugins  from 'gulp-load-plugins';
 import browser  from 'browser-sync';
 import rimraf   from 'rimraf';
 import panini   from 'panini';
-import yargs    from 'yargs';
 import lazypipe from 'lazypipe';
 import inky     from 'inky';
 import fs       from 'fs';
@@ -12,13 +11,14 @@ import path     from 'path';
 import merge    from 'merge-stream';
 import beep     from 'beepbeep';
 import colors   from 'colors';
+
 // mao:
 import he       from 'he';
 
 const $ = plugins();
 
 // Look for the --production flag
-const PRODUCTION = !!(yargs.argv.production);
+const PRODUCTION = !!(require('yargs').argv.production);
 
 // Declar var so that both AWS and Litmus task can use it.
 var CONFIG;
@@ -53,9 +53,9 @@ function pages() {
       root: 'src/pages',
       layouts: 'src/layouts',
       partials: 'src/partials',
-      helpers: 'src/helpers'
+      helpers: 'src/helpers',
     }))
-    .pipe(inky({cheerio: {decodeEntities: true}}))
+    .pipe(inky({ cheerio: { decodeEntities: true } }))
     .pipe(gulp.dest('dist'));
 }
 
@@ -65,16 +65,16 @@ function resetPages(done) {
   done();
 }
 
-// mao: Decode all HTML entities using 'he' module and am_decode() function
+// mao: Decode all HTML entities using 'he' module and amDecode() function
 function decode() {
-    return gulp.src('dist/**/*.html')
-        .pipe($.change(am_decode))
-        .pipe(gulp.dest('dist'));
+  return gulp.src('dist/**/*.html')
+      .pipe($.change(amDecode))
+      .pipe(gulp.dest('dist'));
 }
 
 // mao: Decode all HTML entities using he module
-function am_decode(content) {
-    return he.decode(content);
+function amDecode(content) {
+  return he.decode(content);
 }
 
 // Compile Sass into CSS
@@ -82,7 +82,7 @@ function sass() {
   return gulp.src('src/assets/scss/app.scss')
     .pipe($.if(!PRODUCTION, $.sourcemaps.init()))
     .pipe($.sass({
-      includePaths: ['node_modules/foundation-emails/scss']
+      includePaths: ['node_modules/foundation-emails/scss'],
     }).on('error', $.sass.logError))
     .pipe($.if(!PRODUCTION, $.sourcemaps.write()))
     .pipe(gulp.dest('dist/css'));
@@ -105,71 +105,94 @@ function inline() {
 // Start a server with LiveReload to preview the site in
 function server(done) {
   browser.init({
-        server: {
-            baseDir: 'dist',
-            index: "20170307_letter_8March.html"
-        }
+    server: {
+      baseDir: 'dist',
+      index:   '20170316_letter_Security.html',
+
+      //index: '20170302_letter_Warning.html',
+    },
   });
   done();
 }
 
 // Watch for file changes
 function watch() {
-  gulp.watch('src/pages/**/*.html').on('change', gulp.series(pages, decode, inline, browser.reload));
-  gulp.watch(['src/layouts/**/*', 'src/partials/**/*']).on('change', gulp.series(resetPages, pages, decode, inline, browser.reload));
-  gulp.watch(['../scss/**/*.scss', 'src/assets/scss/**/*.scss']).on('change', gulp.series(resetPages, sass, pages, decode, inline, browser.reload));
-  gulp.watch('src/assets/img/**/*').on('change', gulp.series(images, browser.reload));
+
+  gulp.watch('src/pages/**/*.html')
+    .on('change', gulp.series(pages, decode, inline, browser.reload));
+
+  gulp.watch(['src/layouts/**/*', 'src/partials/**/*'])
+    .on('change', gulp.series(resetPages, pages, decode, inline, browser.reload));
+
+  gulp.watch(['../scss/**/*.scss', 'src/assets/scss/**/*.scss'])
+  .on('change', gulp.series(resetPages, sass, pages, decode, inline, browser.reload));
+
+  gulp.watch('src/assets/img/**/*')
+  .on('change', gulp.series(images, browser.reload));
+
 }
 
-// Inlines CSS into HTML, adds media query CSS into the <style> tag of the email, and compresses the HTML
+// Inlines CSS into HTML, adds media query CSS into the <style> tag of the email
+// and compresses the HTML
 function inliner(css) {
-  var css = fs.readFileSync(css).toString();
-  var mqCss = siphon(css);
+  let css = fs.readFileSync(css).toString();
+  let mqCss = siphon(css);
 
-  var pipe = lazypipe()
+  let pipe = lazypipe()
     .pipe($.inlineCss, {
       applyStyleTags: false,
       removeStyleTags: false,
-      removeLinkTags: true
+      removeLinkTags: true,
     })
     .pipe($.replace, '<!-- <style> -->', `<style>${mqCss}</style>`)
     .pipe($.htmlmin, {
       collapseWhitespace: true,
       conservativeCollapse: true,
       preserveLineBreaks: true,
-      minifyCSS: true
+      minifyCSS: true,
     })
-    .pipe($.replace, /^(.{3200,}?[; ])(.+)$/mg, `$1\n$2`)
-    .pipe($.replace, /^(.{1600,}?[; ])(.+)$/mg, `$1\n$2`)
-    .pipe($.replace, /^(.{800,}?[; ])(.+)$/mg, `$1\n$2`)
-    .pipe($.replace, /^(.{400,}?[; ])(.+)$/mg, `$1\n$2`)
-    .pipe($.replace, /^(.{200,}?[; ])(.+)$/mg, `$1\n$2`)
-    .pipe($.replace, /^(.{100,}?[; ])(.+)$/mg, `$1\n$2`);
+    .pipe($.replace, /^(.{3200,}?[; ])(.+)$/mg, `$1
+$2`)
+    .pipe($.replace, /^(.{1600,}?[; ])(.+)$/mg, `$1
+$2`)
+    .pipe($.replace, /^(.{800,}?[; ])(.+)$/mg, `$1
+$2`)
+    .pipe($.replace, /^(.{400,}?[; ])(.+)$/mg, `$1
+$2`)
+    .pipe($.replace, /^(.{200,}?[; ])(.+)$/mg, `$1
+$2`)
+    .pipe($.replace, /^(.{100,}?[; ])(.+)$/mg, `$1
+$2`);
   return pipe();
 }
 
+
 // Ensure creds for Litmus are at least there.
 function creds(done) {
-  var configPath = './config.json';
+  let configPath = './config.json';
   try { CONFIG = JSON.parse(fs.readFileSync(configPath)); }
-  catch(e) {
+  catch (e) {
     beep();
-    console.log('[AWS]'.bold.red + ' Sorry, there was an issue locating your config.json. Please see README.md');
+    console.log('[AWS]'.bold.red +
+            ' Sorry, there was an issue locating your config.json. Please see README.md');
     process.exit();
   }
+
   done();
 }
 
+
 // Post images to AWS S3 so they are accessible to Litmus test
 function aws() {
-  var publisher = !!CONFIG.aws ? $.awspublish.create(CONFIG.aws) : $.awspublish.create();
-  var headers = {
-    'Cache-Control': 'max-age=315360000, no-transform, public'
+  let publisher = !!CONFIG.aws ? $.awspublish.create(CONFIG.aws) : $.awspublish.create();
+  let headers = {
+    'Cache-Control': 'max-age=315360000, no-transform, public',
   };
 
   return gulp.src('./dist/assets/img/*')
+
     // publisher will add Content-Length, Content-Type and headers specified above
-    // If not specified it will set x-amz-acl to public-read by default
+    //   If not specified it will set x-amz-acl to public-read by default */
     .pipe(publisher.publish(headers))
 
     // create a cache file to speed up consecutive uploads
@@ -179,12 +202,13 @@ function aws() {
     .pipe($.awspublish.reporter());
 }
 
+
 // Send email to Litmus for testing. If no AWS creds then do not replace img urls.
 function litmus() {
-  var awsURL = !!CONFIG && !!CONFIG.aws && !!CONFIG.aws.url ? CONFIG.aws.url : false;
+  let awsURL = !!CONFIG && !!CONFIG.aws && !!CONFIG.aws.url ? CONFIG.aws.url : false;
 
   return gulp.src('dist/**/*.html')
-    .pipe($.if(!!awsURL, $.replace(/=('|")(\/?assets\/img)/g, "=$1"+ awsURL)))
+    .pipe($.if(!!awsURL, $.replace(/=('|")(\/?assets\/img)/g, '=$1' + awsURL)))
     .pipe($.litmus(CONFIG.litmus))
     .pipe(gulp.dest('dist'));
 }
@@ -196,16 +220,16 @@ function zip() {
 
   function getHtmlFiles(dir) {
     return fs.readdirSync(dir)
-      .filter(function(file) {
-        var fileExt = path.join(dir, file);
-        var isHtml = path.extname(fileExt) == ext;
+      .filter(function (file) {
+        let fileExt = path.join(dir, file);
+        let isHtml = path.extname(fileExt) == ext;
         return fs.statSync(fileExt).isFile() && isHtml;
       });
   }
 
   var htmlFiles = getHtmlFiles(dist);
 
-  var moveTasks = htmlFiles.map(function(file){
+  var moveTasks = htmlFiles.map(function (file) {
     var sourcePath = path.join(dist, file);
     var fileName = path.basename(sourcePath, ext);
 
@@ -216,18 +240,17 @@ function zip() {
       }));
 
     var moveImages = gulp.src(sourcePath)
-      .pipe($.htmlSrc({ selector: 'img'}))
+      .pipe($.htmlSrc({ selector: 'img' }))
       .pipe($.rename(function (path) {
         path.dirname = fileName + '/assets/img';
         return path;
       }));
 
     return merge(moveHTML, moveImages)
-      .pipe($.zip(fileName+ '.zip'))
+      .pipe($.zip(fileName + '.zip'))
       .pipe(gulp.dest('dist'));
   });
 
   return merge(moveTasks);
 }
-
 
