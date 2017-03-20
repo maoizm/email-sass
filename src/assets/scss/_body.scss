@@ -30,6 +30,11 @@ time {
 
 button { text-align: center; width: 100% }
 
+.button.large.secondary {
+  border: 2px solid $secondary-color;
+/*  border-right-width: 0;*/
+}
+
 img.am_calendar {
   max-width: 220px;
 }
