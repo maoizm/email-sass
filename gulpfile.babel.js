@@ -107,10 +107,8 @@ function server(done) {
   browser.init({
     server: {
       baseDir: 'dist',
-      index:   '20170419_letter_May.html',
-
-      //index: '20170302_letter_Warning.html',
-    },
+      index:   '20170516_letter_Encrypter.html'
+    }
   });
   done();
 }
