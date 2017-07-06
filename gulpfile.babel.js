@@ -11,9 +11,13 @@ import path     from 'path';
 import merge    from 'merge-stream';
 import beep     from 'beepbeep';
 import colors   from 'colors';
-
 // mao:
 import he       from 'he';
+
+
+const configStarlink = {
+    letter: '20170706_letter_Medoc.html'
+};
 
 const $ = plugins();
 
@@ -107,9 +111,7 @@ function server(done) {
   browser.init({
     server: {
       baseDir: 'dist',
-      index:   '20170419_letter_May.html',
-
-      //index: '20170302_letter_Warning.html',
+      index:   configStarlink.letter
     },
   });
   done();
